@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lina Alamri | Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ui-color: #ce2dff;
+            --dev-color: #5856d6;
+            --data-color: #007aff;
+            --bg: #050505;
+            --card: #121212;
+            --main-gradient: linear-gradient(90deg, #F24E1E, #A259FF, #1ABCFE);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Animated Background Shadows --- */
+        .blob-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 20%;
+            animation: move 20s infinite alternate;
+        }
+        .blob1 { width: 400px; height: 400px; background: var(--ui-color); top: -10%; left: -10%; }
+        .blob2 { width: 450px; height: 450px; background: var(--dev-color); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob3 { width: 300px; height: 300px; background: var(--data-color); top: 40%; left: 50%; animation-delay: -10s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(20vw, 30vh) scale(1.2); }
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
+
+        /* Header */
+        header { padding: 80px 0 40px; text-align: center; }
+        .badge { background: rgba(255,255,255,0.05); padding: 8px 20px; border-radius: 100px; border: 1px solid #333; font-size: 0.9rem; color: #aaa; }
+        h1 { font-size: 4rem; margin: 20px 0; font-weight: 800; letter-spacing: -2px; }
+        .catchy-bio { font-size: 1.4rem; color: #888; max-width: 800px; margin: 0 auto 30px; line-height: 1.4; }
+        
+        .cta-btn {
+            display: inline-block;
+            background: var(--main-gradient);
+            color: white; padding: 16px 36px; border-radius: 14px;
+            text-decoration: none; font-weight: 700;
+            transition: 0.3s; box-shadow: 0 10px 40px rgba(162, 89, 255, 0.2);
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 50px rgba(162, 89, 255, 0.4); }
+
+        /* Section Titles */
+        section { padding: 60px 0; }
+        .section-title { font-size: 2rem; margin-bottom: 30px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--dev-color); }
+
+        /* Boxes & Cards */
+        .content-box { background: var(--card); border: 1px solid #222; padding: 40px; border-radius: 24px; color: #ccc; font-size: 1.1rem; }
+        
+        .tabs { display: flex; justify-content: center; gap: 12px; margin: 40px 0; }
+        .tab-btn {
+            background: rgba(255,255,255,0.03); border: 1px solid #222; color: #777;
+            padding: 12px 28px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .tab-btn.active.ui { border-color: var(--ui-color); color: var(--ui-color); background: rgba(206, 45, 255, 0.1); }
+        .tab-btn.active.dev { border-color: var(--dev-color); color: var(--dev-color); background: rgba(88, 86, 214, 0.1); }
+        .tab-btn.active.data { border-color: var(--data-color); color: var(--data-color); background: rgba(0, 122, 255, 0.1); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card {
+            background: var(--card); border: 1px solid #222; padding: 40px; border-radius: 24px;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .card h3 { margin-bottom: 12px; font-size: 1.5rem; letter-spacing: -0.5px; transition: 0.3s; }
+        .card p { color: #888; font-size: 1rem; }
+
+        /* Hover Glow Effects */
+        #ui .card:hover { border-color: var(--ui-color); box-shadow: 0 0 30px rgba(206, 45, 255, 0.15); transform: translateY(-8px); }
+        #ui .card:hover h3 { color: var(--ui-color); }
+
+        #dev .card:hover { border-color: var(--dev-color); box-shadow: 0 0 30px rgba(88, 86, 214, 0.15); transform: translateY(-8px); }
+        #dev .card:hover h3 { color: var(--dev-color); }
+
+        #data .card:hover { border-color: var(--data-color); box-shadow: 0 0 30px rgba(0, 122, 255, 0.15); transform: translateY(-8px); }
+        #data .card:hover h3 { color: var(--data-color); }
+
+        /* Skills */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-pill { background: #1a1a1a; border: 1px solid #333; padding: 10px 20px; border-radius: 100px; font-size: 0.9rem; color: #aaa; transition: 0.3s; }
+        .skill-pill:hover { border-color: white; color: white; transform: scale(1.05); }
+
+        /* Contact */
+        .contact-box { text-align: center; background: rgba(18, 18, 18, 0.5); border: 1px solid #222; padding: 60px; border-radius: 24px; }
+        .contact-links { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
+        
+        .glow-text {
+            color: #555;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: 0.4s;
+            position: relative;
+            padding: 10px 20px;
+        }
+        .glow-text:hover {
+            color: white;
+            text-shadow: 0 0 15px #A259FF, 0 0 30px #1ABCFE;
+            transform: scale(1.1);
+        }
+        .glow-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background: var(--main-gradient);
+            transition: 0.4s;
+            transform: translateX(-50%);
+        }
+        .glow-text:hover::after { width: 80%; }
+
+        .content-pane { display: none; animation: fadeInUp 0.6s ease forwards; }
+        .content-pane.active { display: block; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { text-align: center; padding: 40px 0; color: #444; border-top: 1px solid #111; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="blob-container">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <span class="badge">Computer Science Graduate | GPA 4.80/5.00</span>
+            <h1>Lina Khaled Alamri </h1>
+            <p class="catchy-bio">
+                A <b>Tech-Creative Hybrid</b> blending the art of UI/UX with the logic of Mobile Development and the precision of Data Analysis. 
+            </p>
+            
+            <a href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-2998" target="_blank" class="cta-btn">
+                 View My UI/UX Portfolio →
+            </a>
+        </header>
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="content-box">
+                A motivated Computer Science graduate from Taibah University. I combine design thinking with solid programming skills to develop intuitive interfaces and functional applications. Passionate about solving complex problems and delivering high-quality, user-centered digital solutions.
+            </div>
+        </section>
+
+        <section id="work">
+            <h2 class="section-title">My Work</h2>
+            <div class="tabs">
+                <button class="tab-btn active ui" onclick="openTab(event, 'ui')">UI/UX Design</button>
+                <button class="tab-btn dev" onclick="openTab(event, 'dev')">Development</button>
+                <button class="tab-btn data" onclick="openTab(event, 'data')">Data Analysis</button>
+            </div>
+
+            <div id="ui" class="content-pane active">
+                <div class="grid">
+                    <div class="card" onclick="window.open('https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3088', '_blank')">
+                        <h3>AstroTalk </h3>
+                        <p>Full UX process: personas, user flows, wireframes, and design system.</p>
+                    </div>
+                    <div class="card" onclick="window.open('https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3576', '_blank')">
+                        <h3>Sunify E-commerce </h3>
+                        <p>Brand identity, product catalog, and checkout flow optimization.</p>
+                    </div>
+                    <div class="card" onclick="window.open('https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-1740', '_blank')">
+                        <h3>Travelo </h3>
+                        <p>User journey mapping, flow optimization, and high-fidelity screens.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dev" class="content-pane">
+                <div class="grid">
+                    <div class="card" onclick="window.open('https://github.com/LinaAlamri/X-Like-App', '_blank')">
+                        <h3>X-Like Social App </h3>
+                        <p>Social media clone built with <b>Flutter</b> and <b>Firebase</b>.</p>
+                    </div>
+                    <div class="card" onclick="window.open('https://github.com/LinaAlamri/Dictionary-App', '_blank')">
+                        <h3>Dictionary App</h3>
+                        <p>Dynamic dictionary using <b>Cubit</b> and <b>Shared Preferences</b>.</p>
+                    </div>
+                    <div class="card" onclick="window.open('https://github.com/LinaAlamri/Business-hub', '_blank')">
+                        <h3>Business Hub </h3>
+                        <p>Centralized platform for business management and discovery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="data" class="content-pane">
+                <div class="grid">
+                    <div class="card">
+                        <h3>Endangered Species </h3>
+                        <p>Data cleaning, modeling, and visualization using <b>Power BI</b>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical Skills </h2>
+            <div class="skills-grid">
+                <div class="skill-pill">Figma </div>
+                <div class="skill-pill">Flutter </div>
+                <div class="skill-pill">Power BI </div>
+                <div class="skill-pill">Python </div>
+                <div class="skill-pill">Firebase </div>
+                <div class="skill-pill">SQL </div>
+                <div class="skill-pill">Java </div>
+                <div class="skill-pill">User Research </div>
+                <div class="skill-pill">Wireframing </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-box">
+                <h2 style="margin-bottom: 10px;">Let's Connect</h2>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/lina-alamri-08b75536a" target="_blank" class="glow-text">LinkedIn</a>
+                    <a href="mailto:linakh1004@gmail.com" class="glow-text">EMAIL ME</a>
+                    <a href="Lina-Khaled-Alamri-FlowCV-Resume-20251218 1.pdf" download class="glow-text">Download CV (PDF) </a>
+                </div>
+                <p style="margin-top: 30px; color: #444;">linakh1004@gmail.com  • Saudi Arabia </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Lina Khaled Alamri. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tablinks;
+            content = document.getElementsByClassName("content-pane");
+            for (i = 0; i < content.length; i++) { content[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
