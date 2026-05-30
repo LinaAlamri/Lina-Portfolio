@@ -70,6 +70,35 @@
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--dev-color); }
 
         /* Boxes & Cards */
+        .featured-project {
+    background: var(--card);
+    border: 1px solid #222;
+    padding: 40px;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+    .featured-project:hover {
+    border-color: var(--ui-color);
+    box-shadow: 0 0 30px rgba(206, 45, 255, 0.15);
+    transform: translateY(-8px);
+}
+
+    .featured-project h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+    .featured-project:hover h3 {
+    color: var(--ui-color);
+}
+
+    .featured-project p {
+    color: #888;
+}
         .content-box { background: var(--card); border: 1px solid #222; padding: 40px; border-radius: 24px; color: #ccc; font-size: 1.1rem; }
         
         .tabs { display: flex; justify-content: center; gap: 12px; margin: 40px 0; }
@@ -154,7 +183,7 @@
             <span class="badge">Computer Science Graduate | GPA 4.80/5.00</span>
             <h1>Lina Khaled Alamri </h1>
             <p class="catchy-bio">
-                A <b>Tech-Creative Hybrid</b> blending the art of UI/UX with the logic of Mobile Development and the precision of Data Analysis. 
+            Bridging design, technology and AI to create meaningful digital experiences through product design, interactive systems and innovative solutions.
             </p>
             
             <a href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-2998" target="_blank" class="cta-btn">
@@ -165,13 +194,24 @@
         <section id="about">
             <h2 class="section-title">About Me</h2>
             <div class="content-box">
-                A motivated Computer Science graduate from Taibah University. I combine design thinking with solid programming skills to develop intuitive interfaces and functional applications. Passionate about solving complex problems and delivering high-quality, user-centered digital solutions.
-            </div>
+        Computer Science graduate with interests in product design, AI-driven experiences and interactive digital systems. Combining design thinking with technical problem-solving to create user-centered solutions through UI/UX design, software development and emerging technologies.            </div>
         </section>
 
         <section id="work">
-            <h2 class="section-title">My Work</h2>
-            <div class="tabs">
+    <h2 class="section-title">My Work</h2>
+
+    <div class="featured-project"
+         onclick="window.open('https://github.com/TaibahViz/AstroTalk', '_blank')">
+
+        <h3>AstroTalk VR & AI Learning Platform</h3>
+
+        <p>
+Graduation project combining conversational AI, immersive VR exploration and interactive learning experiences to help students discover the solar system through natural interaction and engagement.
+</p>
+
+    </div>
+
+    <div class="tabs">
                 <button class="tab-btn active ui" onclick="openTab(event, 'ui')">UI/UX Design</button>
                 <button class="tab-btn dev" onclick="openTab(event, 'dev')">Development</button>
                 <button class="tab-btn data" onclick="openTab(event, 'data')">Data Analysis</button>
@@ -180,16 +220,16 @@
             <div id="ui" class="content-pane active">
                 <div class="grid">
                     <div class="card" onclick="window.open('https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3088', '_blank')">
-                        <h3>AstroTalk </h3>
-                        <p>Full UX process: personas, user flows, wireframes, and design system.</p>
+                    <h3>AstroTalk Mobile UX Case Study</h3>                     
+                       <p>Mobile UX case study covering user research, personas, user flows, wireframes and design system creation.</p>
                     </div>
                     <div class="card" onclick="window.open('https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3576', '_blank')">
                         <h3>Sunify E-commerce </h3>
-                        <p>Brand identity, product catalog, and checkout flow optimization.</p>
+                        <p>E-commerce experience featuring branding, product catalog design and streamlined checkout flow.</p>
                     </div>
                     <div class="card" onclick="window.open('https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-1740', '_blank')">
                         <h3>Travelo </h3>
-                        <p>User journey mapping, flow optimization, and high-fidelity screens.</p>
+                        <p>Travel booking experience focused on user journeys, booking flows and high-fidelity interface design.</p>
                     </div>
                 </div>
             </div>
@@ -198,7 +238,7 @@
                 <div class="grid">
                     <div class="card" onclick="window.open('https://github.com/LinaAlamri/X-Like-App', '_blank')">
                         <h3>X-Like Social App </h3>
-                        <p>Social media clone built with <b>Flutter</b> and <b>Firebase</b>.</p>
+                        <p>Social networking application built with Flutter and Firebase featuring authentication and user interaction.</p>
                     </div>
                     <div class="card" onclick="window.open('https://github.com/LinaAlamri/Dictionary-App', '_blank')">
                         <h3>Dictionary App</h3>
@@ -206,7 +246,7 @@
                     </div>
                     <div class="card" onclick="window.open('https://github.com/LinaAlamri/Business-hub', '_blank')">
                         <h3>Business Hub </h3>
-                        <p>Centralized platform for business management and discovery.</p>
+                        <p>Business management platform focused on organization, discovery and user accessibility.</p>
                     </div>
                 </div>
             </div>
@@ -225,14 +265,21 @@
             <h2 class="section-title">Technical Skills </h2>
             <div class="skills-grid">
                 <div class="skill-pill">Figma </div>
+                <div class="skill-pill">User Research </div>
+                <div class="skill-pill">Wireframing </div>
+                <div class="skill-pill">AI Interaction Design</div>
+                <div class="skill-pill">Prompt Engineering</div>
+                <div class="skill-pill">REST APIs</div>
+                <div class="skill-pill">HTML</div>
+                <div class="skill-pill">CSS</div>
+                <div class="skill-pill">Java Script</div>
                 <div class="skill-pill">Flutter </div>
                 <div class="skill-pill">Power BI </div>
                 <div class="skill-pill">Python </div>
                 <div class="skill-pill">Firebase </div>
                 <div class="skill-pill">SQL </div>
                 <div class="skill-pill">Java </div>
-                <div class="skill-pill">User Research </div>
-                <div class="skill-pill">Wireframing </div>
+  
             </div>
         </section>
 
@@ -242,7 +289,7 @@
                 <div class="contact-links">
                     <a href="https://www.linkedin.com/in/lina-alamri-08b75536a" target="_blank" class="glow-text">LinkedIn</a>
                     <a href="mailto:linakh1004@gmail.com" class="glow-text">EMAIL ME</a>
-                    <a href="Lina-Khaled-Alamri-FlowCV-Resume-20251218 1.pdf" download class="glow-text">Download CV (PDF) </a>
+                    <a href="Lina_Khaled_Alamri_Resume.pdf" download class="glow-text">Download CV (PDF) </a>
                 </div>
                 <p style="margin-top: 30px; color: #444;">linakh1004@gmail.com  • Saudi Arabia </p>
             </div>
