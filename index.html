@@ -3,881 +3,2733 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Lina Alamri — Computer Science × Product Design</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{--cream:#eef5f3;--paper:#f7faf8;--ink:#061a24;--navy:#032b3d;--deep:#021720;--blue:#087e9b;--cyan:#37c6d1;--sky:#a6e0e0;--coral:#d6816d;--muted:#668087;--line:rgba(6,26,36,.18);--serif:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--cream);color:var(--ink);font-family:var(--sans);overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--blue);color:#fff}
-body:before{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply}
-.nav{position:fixed;z-index:100;top:0;left:0;right:0;height:84px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(#eef5f3ee,transparent);transition:.35s}.nav.scrolled{height:70px;background:#eef5f3dd;backdrop-filter:blur(16px);border-bottom:1px solid #061a2412}.logo{width:48px;height:48px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:600 30px var(--serif);background:#ffffff66;position:relative;overflow:hidden}.logo:after{content:"";position:absolute;width:75px;height:18px;background:var(--cyan);left:-12px;bottom:-8px;transform:rotate(-25deg);opacity:.5}.logo span{position:relative;z-index:2}.nav-links{display:flex;gap:31px;font-size:10px;text-transform:uppercase;letter-spacing:.2em}.nav-links a:after{content:"";display:block;width:0;height:1px;background:var(--blue);transition:.3s;margin-top:7px}.nav-links a:hover:after{width:100%}.connect{border:1px solid var(--ink);border-radius:999px;padding:12px 17px;font-size:10px;text-transform:uppercase;letter-spacing:.14em;transition:.3s}.connect:hover{background:var(--ink);color:#fff}
-.hero{min-height:100vh;padding:150px 5vw 80px;position:relative;display:flex;align-items:center;overflow:hidden;isolation:isolate}.hero:before{content:"";position:absolute;z-index:-3;right:-12vw;top:-15vw;width:70vw;height:70vw;max-width:920px;max-height:920px;border-radius:50%;background:linear-gradient(145deg,#35c5d1 0%,#087d99 45%,#032d45 100%);transform:rotate(-16deg);opacity:.96}.hero:after{content:"";position:absolute;z-index:-2;right:-5vw;bottom:-27vw;width:75vw;height:48vw;border-radius:55% 45% 0 0;background:linear-gradient(180deg,#73d5d8,#087f9c 55%,#05364c);transform:rotate(-5deg);opacity:.9}.hero-copy{width:55%;position:relative;z-index:10}.eyebrow{display:flex;align-items:center;gap:12px;color:#145c70;font-size:10px;text-transform:uppercase;letter-spacing:.24em;margin-bottom:23px}.eyebrow span{width:42px;height:1px;background:var(--coral)}.hero h1{font:500 clamp(100px,14.5vw,225px)/.69 var(--serif);letter-spacing:-.075em}.hero h1 em{font-style:italic;font-weight:400;color:#08718c}.hero-sub{max-width:500px;margin:48px 0 0 8vw;color:#355a63;font:italic 23px/1.18 var(--serif)}.hero-sub em{color:var(--blue)}.hero-actions{margin:30px 0 0 8vw;display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:12px;padding:14px 21px;border:1px solid var(--ink);border-radius:999px;font-size:10px;text-transform:uppercase;letter-spacing:.15em;transition:.35s}.button:hover{transform:translateY(-4px);background:var(--ink);color:#fff}.button.filled{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 14px 30px #087e9b22}.button.filled:hover{background:var(--navy);border-color:var(--navy)}
-.hero-art{position:absolute;z-index:5;right:1vw;top:10%;width:min(54vw,790px);height:78vh;pointer-events:none;transition:none}.hero-art img{position:absolute;object-fit:cover;filter:saturate(.9) contrast(.98);box-shadow:0 25px 80px #02263522}.hero-ocean{width:52%;height:78%;right:6%;top:7%;border-radius:48% 52% 47% 53%/42% 38% 62% 58%;object-position:center;mix-blend-mode:multiply;opacity:.93}.hero-window{width:39%;height:48%;right:24%;bottom:5%;border-radius:45% 45% 8px 8px;object-position:center 38%;border:8px solid #eef5f3aa;box-shadow:0 25px 55px #0226352b}.hero-spiral{width:23%;height:23%;right:1%;top:25%;border-radius:50%;object-fit:cover;opacity:.9;border:1px solid #fff8}.hero-cloud{position:absolute;left:8%;top:8%;width:220px;height:280px;background:url('assets/cloud-person.jpg') center/cover;opacity:.88;mix-blend-mode:multiply;border-radius:55% 45% 18% 18%;filter:saturate(.9) contrast(1.02);box-shadow:0 25px 55px #02263520}.hero-bird{position:absolute;right:8%;top:12%;width:110px;height:150px;background:url('assets/dolphin-ocean.jpg') center/cover;clip-path:ellipse(45% 48% at 50% 50%);opacity:.78;mix-blend-mode:multiply}.hero-orbit{position:absolute;right:10%;top:27%;width:330px;height:135px;border:1px solid #061a2430;border-radius:50%;transform:rotate(-20deg)}.hero-orbit:before{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--coral);left:25px;top:4px}.hero-quote{position:absolute;right:3vw;bottom:13%;z-index:12;max-width:145px;color:#315c65;font:italic 19px/1.2 var(--serif)}
-.hero-quote strong{color:var(--blue)
-}
-.marquee{overflow:hidden;white-space:nowrap;background:var(--navy);color:#e8f4f1;padding:15px 0;border-block:1px solid #ffffff1c}.marquee-track{display:inline-block;font:italic 29px var(--serif);animation:marquee 24s linear infinite}.marquee span{color:var(--cyan);margin:0 28px}@keyframes marquee{to{transform:translateX(-50%)}}
-.section{padding:135px 5vw;position:relative}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:35px;margin-bottom:62px}.kicker{color:var(--blue);font-size:10px;text-transform:uppercase;letter-spacing:.23em;margin-bottom:13px}.section-title{font:500 clamp(58px,8vw,112px)/.78 var(--serif);letter-spacing:-.055em}.section-title em{color:var(--blue);font-style:italic}.section-note{max-width:330px;color:var(--muted);font-size:13px;line-height:1.8}
-.about{background:var(--paper);overflow:hidden}.about:before{content:"";position:absolute;width:720px;height:720px;right:-330px;top:-280px;border:1px solid #087e9b24;border-radius:50%}.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:8vw;align-items:center}.about-text{font:400 clamp(34px,4.2vw,62px)/1 var(--serif);max-width:760px}.about-text em{color:var(--blue)}.about-details{border-left:1px solid var(--line);padding-left:30px;color:#5d777d;line-height:1.9;font-size:14px}.about-details strong{display:block;color:var(--ink);margin-bottom:8px}.stats{display:flex;gap:48px;margin-top:48px}.stat strong{display:block;font:500 55px var(--serif);color:var(--blue)}.stat span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#668087}
-.work-section{background:radial-gradient(circle at 82% 8%,#1eb8c522,transparent 25%),linear-gradient(145deg,#031a26,#063448 60%,#021720);color:#eef7f5;overflow:hidden}.work-section:before{content:"";position:absolute;inset:0;opacity:.18;background:repeating-radial-gradient(ellipse at 30% 75%,transparent 0 65px,#8ed9df33 66px 67px,transparent 68px 112px);transform:rotate(-7deg) scale(1.4);pointer-events:none}.work-section .section-note{color:#9ec2c5}.work-section .section-title{color:#eef7f5}.work-section .kicker{color:#6ed5dc}.featured{min-height:420px;display:grid;grid-template-columns:1.15fr .85fr;border:1px solid #cfe8e72e;overflow:hidden;background:#063447;position:relative}.featured-visual{position:relative;overflow:hidden;min-height:420px;background:#0b7f98}.featured-visual:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url('assets/q.jpg') center center / contain no-repeat;
-  filter:saturate(.95) contrast(1.03);
-  opacity:.9;
-  background-color:#0b7f98;
-}.featured-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#087f9b08,#02192355)}
-.image-note{position:absolute;left:24px;bottom:20px;z-index:4;padding:7px 11px;border:1px solid #ffffff66;border-radius:999px;background:#02192366;color:#eff8f6;font-size:9px;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(8px)}
-.featured-visual .image-note{content:'SURRREAL STUDY'}
-.featured-art{position:absolute;inset:0;z-index:2}.featured-art img{position:absolute;object-fit:cover;border:5px solid #eff6f2aa;box-shadow:0 30px 60px #02192355}.astro-planet{width:170px;height:170px;border-radius:50%;right:15%;top:17%}.astro-dolphin{width:170px;height:250px;left:16%;bottom:8%;border-radius:90px 90px 18px 18px;object-position:center}.featured-info{padding:45px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#03182122,#011016aa);position:relative;z-index:3}.project-number{font:500 19px var(--serif);color:#8ed9df}.featured-info h3{font:500 clamp(53px,5vw,82px)/.84 var(--serif);letter-spacing:-.045em}.featured-info p{max-width:470px;margin-top:24px;color:#a9c4c6;font-size:14px;line-height:1.8}.project-link{display:inline-flex;align-items:center;gap:13px;font-size:10px;text-transform:uppercase;letter-spacing:.18em}.project-link span{font-size:22px;transition:.3s}.project-link:hover span{transform:translateX(8px)}
-.work-tabs{display:flex;gap:8px;margin:48px 0 27px}.work-tab{color:#9db9bc;background:transparent;border:1px solid #cfe8e733;border-radius:999px;padding:11px 18px;cursor:pointer;font-size:10px;text-transform:uppercase;letter-spacing:.15em;transition:.3s}.work-tab:hover,.work-tab.active{background:#edf5f2;color:var(--navy);border-color:#edf5f2}.projects{display:none}.projects.active{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.project-card{min-height:315px;border:1px solid #cfe8e733;position:relative;overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;transition:.5s;background:linear-gradient(145deg,#071f2a,#062b3b);}.project-card:hover{transform:translateY(-7px);border-color:#8ed9df99;background:linear-gradient(145deg,#092936,#07384a)}.project-card h4{font:500 39px/.86 var(--serif);letter-spacing:-.04em;margin-top:12px}.project-card p{max-width:300px;color:#b2cbcd;font-size:12px;line-height:1.7}.card-arrow{align-self:flex-end;width:42px;height:42px;display:grid;place-items:center;border:1px solid #fff8;border-radius:50%;transition:.35s}.project-card:hover .card-arrow{background:#fff;color:var(--navy);transform:rotate(25deg)}.astro-card-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.34;filter:saturate(.9) contrast(1.05);}.astro-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,#02192320 0%,#021923dc 92%);z-index:1}.project-card > *:not(.astro-card-image):not(.astro-card-overlay){position:relative;z-index:2}
-.skills-section{background:#e9f3f1}.skills{display:grid;grid-template-columns:1fr 2fr;gap:7vw}.skills-intro{font:500 52px/.92 var(--serif)}.skills-intro em{color:var(--blue)}.skill-cloud{display:flex;flex-wrap:wrap;gap:10px}.skill{border:1px solid var(--line);background:#ffffff66;padding:12px 17px;border-radius:999px;font-size:11px;transition:.35s}.skill:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-4px) rotate(-2deg)}
-.contact{min-height:78vh;background:radial-gradient(circle at 82% 15%,#48d0d522,transparent 22%),linear-gradient(150deg,#02141d,#06435a 65%,#087e9b);color:#eef7f5;overflow:hidden}.contact .kicker{color:#8ed9df}.contact-title{font:400 clamp(90px,14vw,190px)/.7 var(--serif);letter-spacing:-.07em}.contact-title em{color:#8ed9df}.contact-copy{margin-top:45px;max-width:510px;color:#b4d1d2;font-size:14px;line-height:1.8}.contact .button{border-color:#ffffff77}.contact .button:hover{background:#fff;color:var(--navy)}.contact .button.filled{background:#edf7f5;color:var(--navy);border-color:#edf7f5}.contact-art{position:absolute;right:2vw;bottom:-80px;width:min(48vw,650px);height:560px;opacity:.9}.contact-art img{position:absolute;object-fit:cover;box-shadow:0 30px 70px #02172055}.contact-art .c1{width:250px;height:350px;right:30%;bottom:7%;border-radius:125px 125px 15px 15px}.contact-art .c2{width:170px;height:170px;right:2%;bottom:16%;border-radius:50%}.contact-art .c3{width:160px;height:240px;left:3%;bottom:3%;border-radius:90px 90px 12px 12px}.contact-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-footer{padding:22px 5vw;background:#021018;color:#78959b;display:flex;justify-content:space-between;gap:20px;font-size:9px;text-transform:uppercase;letter-spacing:.16em}.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s ease}.reveal.visible{opacity:1;transform:none}.cursor{position:fixed;z-index:2000;width:16px;height:16px;border:1px solid var(--blue);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s}.cursor.big{width:54px;height:54px;background:#37c6d11c}
-@media(max-width:1000px){.hero-copy{width:60%}.hero-art{width:57vw;right:-7vw}.hero h1{font-size:13vw}.featured{grid-template-columns:1fr}.featured-visual{min-height:470px}.projects.active{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.nav{height:72px;padding:0 6vw}.nav-links{display:none}.connect{padding:10px 13px}.hero{display:block;padding:125px 6vw 70px}.hero-copy{width:100%}.hero h1{font-size:23vw}.hero-sub,.hero-actions{margin-left:0}.hero-sub{font-size:21px}.hero-art{position:relative;width:112%;height:430px;right:auto;top:auto;margin:5px -6% -15px}.hero-ocean{width:57%;height:76%;right:3%}.hero-window{width:42%;height:48%;right:25%}.hero-spiral{width:25%;height:25%;right:0}.hero-cloud{left:5%;top:12%;width:180px}.hero-orbit{right:3%;top:27%;width:220px}.hero-quote{right:6vw;bottom:2%;font-size:17px}.section{padding:95px 6vw}.section-head{display:block}.section-note{margin-top:25px}.about-grid,.skills{grid-template-columns:1fr}.stats{gap:25px;flex-wrap:wrap}.featured-info{padding:40px}.projects.active{grid-template-columns:1fr}.project-card{min-height:275px}.skills{gap:40px}.contact-art{width:100vw;height:420px;right:-15vw;opacity:.5}footer{display:block;line-height:2.2}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-
-.skill-groups{display:grid;gap:30px}
-.skill-group h3{font:500 25px/1 var(--serif);color:var(--ink);margin-bottom:14px}
-.skill-group .skill-cloud{gap:9px}
-@media(max-width:760px){.skill-groups{gap:24px}}
-
-
-.journey-section{background:var(--paper);border-top:1px solid #061a2410}
-.journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.journey-item{padding:30px;border:1px solid var(--line);background:#ffffff66;min-height:210px}
-.journey-item span{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:var(--blue)}
-.journey-item h3{font:500 42px/.9 var(--serif);margin:25px 0 15px}
-.journey-item p{font-size:13px;line-height:1.75;color:var(--muted)}
-.project-card{position:relative}
-.astro-project-card{background:#063447}
-.astro-card-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.82;transition:opacity .35s}
-.astro-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,#02192322 15%,#021923e8 100%);z-index:-1}
-.astro-project-card:hover .astro-card-image{opacity:.92}
-.project-card:focus-visible,.button:focus-visible,.connect:focus-visible,.nav-links a:focus-visible,.work-tab:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
-@media(max-width:760px){.journey-grid{grid-template-columns:1fr}.journey-item{min-height:auto}}
-
-
-/* =========================================================
-   FINAL UI POLISH — GRID / TYPE / CARDS / MARQUEE
-   ========================================================= */
 
 :root{
+  --cream:#eef5f3;
+  --paper:#f7faf8;
+  --ink:#061a24;
+  --navy:#032b3d;
+  --deep:#021720;
+  --blue:#087e9b;
+  --cyan:#37c6d1;
+  --sky:#a6e0e0;
+  --coral:#d6816d;
+  --muted:#668087;
+  --line:rgba(6,26,36,.18);
+
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",Arial,sans-serif;
+
   --content-max:1280px;
-  --content-width:90vw;
 }
 
-/* One consistent alignment system across the whole page */
-.section{
-  padding:118px 0;
-}
-.section > .section-head,
-.section > .featured,
-.section > .work-tabs,
-.section > .projects,
-.section > .journey-grid,
-.section > .skills{
-  width:min(var(--content-max),var(--content-width));
-  margin-left:auto;
-  margin-right:auto;
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-/* Typography hierarchy */
-.section-head{
-  align-items:flex-end;
-  gap:56px;
-  margin-bottom:50px;
+html{
+  scroll-behavior:smooth;
 }
-.kicker{
+
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+::selection{
+  background:var(--blue);
+  color:#fff;
+}
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:999;
+  pointer-events:none;
+  opacity:.045;
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  mix-blend-mode:multiply;
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+  position:fixed;
+  z-index:100;
+  top:0;
+  left:0;
+  right:0;
+  height:84px;
+  padding:0 5vw;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:linear-gradient(#eef5f3ee,transparent);
+
+  transition:.35s;
+}
+
+.nav.scrolled{
+  height:70px;
+  background:#eef5f3dd;
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid #061a2412;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+
+  border:1px solid var(--ink);
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  font:600 30px var(--serif);
+
+  background:#ffffff66;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.logo:after{
+  content:"";
+  position:absolute;
+  width:75px;
+  height:18px;
+  background:var(--cyan);
+  left:-12px;
+  bottom:-8px;
+  transform:rotate(-25deg);
+  opacity:.5;
+}
+
+.logo span{
+  position:relative;
+  z-index:2;
+}
+
+.nav-links{
+  display:flex;
+  gap:31px;
+
   font-size:10px;
-  line-height:1;
-  letter-spacing:.20em;
-  margin-bottom:15px;
-}
-.section-title{
-  font-size:clamp(52px,6.4vw,92px);
-  line-height:.84;
-  letter-spacing:-.05em;
-}
-.section-note{
-  max-width:360px;
-  font-size:13px;
-  line-height:1.75;
-  margin-bottom:3px;
+  text-transform:uppercase;
+  letter-spacing:.2em;
 }
 
-/* Hero copy follows the same horizontal rhythm as the sections */
-.hero-copy{
-  margin-left:max(5vw,calc((100vw - var(--content-max))/2));
-  width:min(600px,43vw);
+.nav-links a:after{
+  content:"";
+  display:block;
+  width:0;
+  height:1px;
+  background:var(--blue);
+  transition:.3s;
+  margin-top:7px;
 }
+
+.nav-links a:hover:after{
+  width:100%;
+}
+
+.connect{
+  border:1px solid var(--ink);
+  border-radius:999px;
+
+  padding:12px 17px;
+
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+
+  transition:.3s;
+}
+
+.connect:hover{
+  background:var(--ink);
+  color:#fff;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:100vh;
+  padding:150px 5vw 80px;
+
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  z-index:-3;
+
+  right:-12vw;
+  top:-15vw;
+
+  width:70vw;
+  height:70vw;
+
+  max-width:920px;
+  max-height:920px;
+
+  border-radius:50%;
+
+  background:linear-gradient(
+    145deg,
+    #35c5d1 0%,
+    #087d99 45%,
+    #032d45 100%
+  );
+
+  transform:rotate(-16deg);
+  opacity:.96;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  z-index:-2;
+
+  right:-5vw;
+  bottom:-27vw;
+
+  width:75vw;
+  height:48vw;
+
+  border-radius:55% 45% 0 0;
+
+  background:linear-gradient(
+    180deg,
+    #73d5d8,
+    #087f9c 55%,
+    #05364c
+  );
+
+  transform:rotate(-5deg);
+  opacity:.9;
+}
+
+.hero-copy{
+  width:55%;
+  position:relative;
+  z-index:10;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  color:#145c70;
+
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.24em;
+
+  margin-bottom:23px;
+}
+
+.eyebrow span{
+  width:42px;
+  height:1px;
+  background:var(--coral);
+}
+
+.hero h1{
+  font:500 clamp(100px,14.5vw,225px)/.69 var(--serif);
+  letter-spacing:-.075em;
+}
+
+.hero h1 em{
+  font-style:italic;
+  font-weight:400;
+  color:#08718c;
+}
+
 .hero-sub{
   max-width:520px;
-  font-size:17px;
-  line-height:1.7;
-}
-.hero-actions{
-  margin-left:0;
+  margin:48px 0 0;
+
+  color:#355a63;
+
+  font:italic 17px/1.7 var(--serif);
 }
 
-/* Marquee: absolutely no wrapping */
+.hero-sub em{
+  color:var(--blue);
+}
+
+.hero-actions{
+  margin:30px 0 0;
+
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
+  padding:14px 21px;
+
+  border:1px solid var(--ink);
+  border-radius:999px;
+
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+
+  transition:.35s;
+}
+
+.button:hover{
+  transform:translateY(-4px);
+  background:var(--ink);
+  color:#fff;
+}
+
+.button.filled{
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue);
+  box-shadow:0 14px 30px #087e9b22;
+}
+
+.button.filled:hover{
+  background:var(--navy);
+  border-color:var(--navy);
+}
+
+.hero-art{
+  position:absolute;
+  z-index:5;
+
+  right:1vw;
+  top:10%;
+
+  width:min(54vw,790px);
+  height:78vh;
+
+  pointer-events:none;
+}
+
+.hero-art img{
+  position:absolute;
+  object-fit:cover;
+
+  filter:saturate(.9) contrast(.98);
+
+  box-shadow:0 25px 80px #02263522;
+}
+
+.hero-ocean{
+  width:52%;
+  height:78%;
+
+  right:6%;
+  top:7%;
+
+  border-radius:48% 52% 47% 53%/42% 38% 62% 58%;
+
+  object-position:center;
+
+  mix-blend-mode:multiply;
+  opacity:.93;
+}
+
+.hero-window{
+  width:39%;
+  height:48%;
+
+  right:24%;
+  bottom:5%;
+
+  border-radius:45% 45% 8px 8px;
+
+  object-position:center 38%;
+
+  border:8px solid #eef5f3aa;
+
+  box-shadow:0 25px 55px #0226352b;
+}
+
+.hero-cloud{
+  position:absolute;
+
+  left:8%;
+  top:8%;
+
+  width:220px;
+  height:280px;
+
+  background:url('assets/cloud-person.jpg') center/cover;
+
+  opacity:.88;
+
+  mix-blend-mode:multiply;
+
+  border-radius:55% 45% 18% 18%;
+
+  filter:saturate(.9) contrast(1.02);
+
+  box-shadow:0 25px 55px #02263520;
+}
+
+.hero-quote{
+  position:absolute;
+
+  right:3vw;
+  bottom:13%;
+
+  z-index:12;
+
+  max-width:145px;
+
+  color:#315c65;
+
+  font:italic 19px/1.2 var(--serif);
+}
+
+.hero-quote strong{
+  color:var(--blue);
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
 .marquee{
   width:100%;
   height:62px;
   min-height:62px;
+
   padding:0;
+
   display:flex;
   align-items:center;
+
   overflow:hidden;
   white-space:nowrap;
+
   background:#020b10;
   color:#e8f4f1;
+
+  border-block:1px solid #ffffff1c;
 }
+
 .marquee-track{
   display:block;
   flex:0 0 auto;
+
   width:max-content;
   max-width:none;
+
   white-space:nowrap;
+
   font:italic 24px/1 var(--serif);
-  letter-spacing:-.01em;
+
   animation:marquee 28s linear infinite;
   will-change:transform;
 }
+
 .marquee span{
   display:inline-block;
   margin:0 28px;
   color:var(--cyan);
 }
 
-/* About typography */
-.about-text{
-  font-size:clamp(32px,3.7vw,56px);
-  line-height:1.02;
-  letter-spacing:-.025em;
-}
-.about-details{
-  font-size:14px;
-  line-height:1.85;
-}
-.stat strong{
-  font-size:50px;
-}
-
-/* Featured project: important, but no longer page-eating */
-.featured{
-  min-height:360px;
-  height:360px;
-  grid-template-columns:1.12fr .88fr;
-}
-.featured-visual{
-  min-height:360px;
-}
-.featured-info{
-  padding:42px 46px;
-}
-.project-number{
-  font-size:17px;
-}
-.featured-info h3{
-  font-size:clamp(44px,4.4vw,68px);
-  line-height:.86;
-}
-.featured-info p{
-  max-width:430px;
-  margin-top:18px;
-  font-size:13px;
-  line-height:1.7;
-}
-.project-link{
-  font-size:10px;
-}
-
-/* Project filters aligned with the same grid */
-.work-tabs{
-  margin-top:34px;
-  margin-bottom:20px;
-}
-
-/* Smaller project cards */
-.projects.active{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;
-}
-.project-card{
-  min-height:0;
-  height:270px;
-  padding:24px;
-  border-radius:0;
-  background:linear-gradient(145deg,#071f2a,#062b3b);
-  color:#eef7f5;
-  transition:transform .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease;
-}
-
-/* Only AstroTalk keeps its project image */
-.project-card:not(.astro-project-card) .astro-card-image,
-.project-card:not(.astro-project-card) .astro-card-overlay{
-  display:none;
-}
-
-/* Never allow an old override to turn normal cards white */
-.project-card:not(.astro-project-card):hover{
-  background:linear-gradient(145deg,#092936,#07384a) !important;
-  color:#eef7f5 !important;
-  border-color:#8ed9df99;
-  transform:translateY(-6px);
-  box-shadow:0 14px 30px #02192320;
-}
-.project-card:not(.astro-project-card):hover h4,
-.project-card:not(.astro-project-card):hover p,
-.project-card:not(.astro-project-card):hover .project-number{
-  color:inherit;
-}
-.project-card:not(.astro-project-card) p{
-  color:#b2cbcd;
-}
-.project-card h4{
-  font-size:clamp(30px,2.7vw,38px);
-  line-height:.88;
-  margin-top:10px;
-}
-.project-card p{
-  max-width:290px;
-  font-size:11.5px;
-  line-height:1.65;
-}
-.card-arrow{
-  width:38px;
-  height:38px;
-}
-.project-card:hover .card-arrow{
-  background:#eef7f5;
-  color:var(--navy);
-}
-
-/* Journey cards: same grid, tighter visual rhythm */
-.journey-grid{
-  gap:14px;
-}
-.journey-item{
-  min-height:190px;
-  padding:26px;
-}
-.journey-item h3{
-  font-size:36px;
-  line-height:.92;
-  margin:20px 0 13px;
-}
-.journey-item p{
-  font-size:12.5px;
-  line-height:1.7;
-}
-
-/* Skills alignment + scale */
-.skills{
-  gap:7vw;
-}
-.skills-intro{
-  font-size:48px;
-  line-height:.94;
-}
-.skill-group h3{
-  font-size:23px;
-}
-.skill{
-  font-size:10.5px;
-  padding:11px 15px;
-}
-
-/* Contact remains dramatic, but its text aligns with the page grid */
-.contact{
-  padding-left:0;
-  padding-right:0;
-}
-.contact > .kicker,
-.contact > .contact-title,
-.contact > .contact-copy,
-.contact > .contact-links{
-  width:min(var(--content-max),var(--content-width));
-  margin-left:auto;
-  margin-right:auto;
-}
-.contact-title{
-  font-size:clamp(82px,12vw,170px);
-}
-.contact-copy{
-  margin-top:38px;
-  font-size:13.5px;
-}
-
-/* Footer uses the same horizontal grid */
-footer{
-  padding-left:max(5vw,calc((100vw - var(--content-max))/2));
-  padding-right:max(5vw,calc((100vw - var(--content-max))/2));
-}
-
-/* Touch devices */
-@media (hover:none),(pointer:coarse){
-  .cursor{display:none!important}
-}
-
-/* Responsive: preserve the grid rather than letting elements drift */
-@media(max-width:900px){
-  .section{
-    padding:100px 0;
-  }
-  .section > .section-head,
-  .section > .featured,
-  .section > .work-tabs,
-  .section > .projects,
-  .section > .journey-grid,
-  .section > .skills{
-    width:88vw;
-  }
-  .hero-copy{
-    margin-left:6vw;
-    width:88vw;
-  }
-  .section-head{
-    gap:25px;
-  }
-  .featured{
-    height:auto;
-    min-height:0;
-    grid-template-columns:1fr;
-  }
-  .featured-visual{
-    min-height:300px;
-    height:300px;
-  }
-  .featured-info{
-    min-height:310px;
-    padding:34px;
-  }
-  .projects.active{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+@keyframes marquee{
+  to{
+    transform:translateX(-50%);
   }
 }
-
-@media(max-width:760px){
-  .section{
-    padding:88px 0;
-  }
-  .section > .section-head,
-  .section > .featured,
-  .section > .work-tabs,
-  .section > .projects,
-  .section > .journey-grid,
-  .section > .skills{
-    width:88vw;
-  }
-  .section-head{
-    display:block;
-    margin-bottom:38px;
-  }
-  .section-note{
-    max-width:100%;
-    margin-top:20px;
-  }
-  .section-title{
-    font-size:clamp(48px,15vw,72px);
-  }
-  .hero-copy{
-    margin-left:6vw;
-    width:88vw;
-  }
-  .hero-sub{
-    font-size:18px;
-    line-height:1.65;
-  }
-  .marquee{
-    height:56px;
-    min-height:56px;
-  }
-  .marquee-track{
-    font-size:21px;
-  }
-  .marquee span{
-    margin:0 20px;
-  }
-  .featured-visual{
-    min-height:270px;
-    height:270px;
-  }
-  .featured-info{
-    min-height:290px;
-    padding:30px;
-  }
-  .featured-info h3{
-    font-size:clamp(42px,13vw,62px);
-  }
-  .projects.active{
-    grid-template-columns:1fr;
-  }
-  .project-card{
-    height:250px;
-  }
-  .project-card h4{
-    font-size:34px;
-  }
-  .journey-grid{
-    grid-template-columns:1fr;
-  }
-  .journey-item{
-    min-height:auto;
-  }
-  .about-grid{
-    gap:45px;
-  }
-  .about-text{
-    font-size:clamp(31px,9vw,46px);
-  }
-  .skills{
-    grid-template-columns:1fr;
-    gap:38px;
-  }
-  .skills-intro{
-    font-size:44px;
-  }
-  .contact > .kicker,
-  .contact > .contact-title,
-  .contact > .contact-copy,
-  .contact > .contact-links{
-    width:88vw;
-  }
-  .contact-title{
-    font-size:clamp(78px,22vw,130px);
-  }
-  footer{
-    padding-left:6vw;
-    padding-right:6vw;
-    flex-direction:column;
-  }
-}
-
 
 /* =========================================================
-   ALIGNMENT CORRECTION — PRESERVE ORIGINAL ART DIRECTION
-   ========================================================= */
+   GENERAL SECTIONS
+========================================================= */
 
-/* The original page uses a 5vw editorial margin.
-   Do NOT center each section independently. */
 .section{
-  padding:135px 5vw !important;
+  padding:135px 5vw;
+  position:relative;
 }
 
-.section > .section-head,
-.section > .featured,
-.section > .work-tabs,
-.section > .projects,
-.section > .journey-grid,
-.section > .skills{
-  width:auto !important;
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-
-/* Keep section headings on one clean baseline.
-   The note stays aligned to the bottom of the heading block. */
 .section-head{
-  display:flex !important;
-  justify-content:space-between !important;
-  align-items:flex-end !important;
-  gap:50px !important;
-  margin-bottom:62px !important;
+  display:flex;
+
+  justify-content:space-between;
+  align-items:flex-end;
+
+  gap:50px;
+
+  margin-bottom:62px;
 }
+
 .section-head > div{
   flex:1 1 auto;
   min-width:0;
 }
+
+.kicker{
+  color:var(--blue);
+
+  font-size:10px;
+  line-height:1;
+
+  text-transform:uppercase;
+  letter-spacing:.20em;
+
+  margin-bottom:15px;
+}
+
+.section-title{
+  font:500 clamp(52px,6.4vw,92px)/.84 var(--serif);
+  letter-spacing:-.05em;
+}
+
+.section-title em{
+  color:var(--blue);
+  font-style:italic;
+}
+
 .section-note{
   flex:0 0 330px;
-  margin:0 0 2px auto !important;
-}
 
-/* Hero: keep the original composition, but give the text a single
-   internal left edge instead of separate 8vw offsets. */
-.hero-copy{
-  width:55% !important;
-  margin-left:0 !important;
-}
-.hero-sub,
-.hero-actions{
-  margin-left:0 !important;
-}
+  max-width:330px;
 
-/* Consistent internal padding for all project cards. */
-.project-card{
-  box-sizing:border-box;
-  padding:28px !important;
-}
-.project-card .project-number,
-.project-card h4,
-.project-card p{
-  margin-left:0 !important;
-}
-.project-card .card-arrow{
-  margin-right:0 !important;
-}
+  color:var(--muted);
 
-/* Featured project follows the same outer grid as the other work. */
-.featured{
-  width:100% !important;
-  height:360px !important;
-  min-height:360px !important;
-}
-.featured-visual{
-  min-height:360px !important;
-}
-.featured-info{
-  padding:38px 42px !important;
-}
+  font-size:13px;
+  line-height:1.75;
 
-/* Project cards: equal heights, clean vertical rhythm. */
-.projects.active{
-  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
-  gap:15px !important;
+  margin:0 0 2px auto;
 }
-.project-card{
-  height:270px !important;
-  min-height:270px !important;
-}
-
-/* Do not let hover change the card's visual identity. */
-.project-card:not(.astro-project-card):hover{
-  background:linear-gradient(145deg,#092936,#07384a) !important;
-  color:#eef7f5 !important;
-  border-color:#8ed9df99 !important;
-  transform:translateY(-6px) !important;
-}
-.project-card:not(.astro-project-card):hover h4,
-.project-card:not(.astro-project-card):hover p,
-.project-card:not(.astro-project-card):hover .project-number{
-  color:inherit !important;
-}
-.project-card:not(.astro-project-card) .card-arrow{
-  background:transparent !important;
-  color:#eef7f5 !important;
-}
-.project-card:not(.astro-project-card):hover .card-arrow{
-  background:#eef7f5 !important;
-  color:var(--navy) !important;
-}
-
-/* Marquee is a single horizontal strip. */
-.marquee{
-  height:62px !important;
-  min-height:62px !important;
-  padding:0 !important;
-  display:flex !important;
-  align-items:center !important;
-  overflow:hidden !important;
-  white-space:nowrap !important;
-  background:#020b10 !important;
-}
-.marquee-track{
-  display:block !important;
-  flex:0 0 auto !important;
-  width:max-content !important;
-  max-width:none !important;
-  white-space:nowrap !important;
-  line-height:1 !important;
-}
-
-/* About: keep both columns on the same top/bottom rhythm. */
-.about-grid{
-  align-items:center !important;
-}
-.about-details{
-  margin-top:0 !important;
-}
-
-/* Skills: align intro and skill groups to the same vertical start. */
-.skills{
-  align-items:start !important;
-}
-
-/* Contact: preserve the original left edge; don't create a second grid. */
-.contact > .kicker,
-.contact > .contact-title,
-.contact > .contact-copy,
-.contact > .contact-links{
-  width:auto !important;
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-
-/* Responsive: only change the grid when the viewport actually needs it. */
-@media(max-width:900px){
-  .section{
-    padding:100px 6vw !important;
-  }
-  .section-head{
-    gap:25px !important;
-  }
-  .section-note{
-    flex-basis:290px;
-  }
-  .hero-copy{
-    width:88vw !important;
-    margin-left:0 !important;
-  }
-  .featured{
-    height:auto !important;
-    min-height:0 !important;
-  }
-  .featured-visual{
-    min-height:300px !important;
-    height:300px !important;
-  }
-  .featured-info{
-    min-height:300px;
-    padding:34px !important;
-  }
-  .projects.active{
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  }
-}
-
-@media(max-width:760px){
-  .section{
-    padding:88px 6vw !important;
-  }
-  .section-head{
-    display:block !important;
-    margin-bottom:38px !important;
-  }
-  .section-note{
-    width:auto;
-    max-width:100%;
-    margin-top:20px !important;
-  }
-  .hero-copy{
-    width:88vw !important;
-  }
-  .projects.active{
-    grid-template-columns:1fr !important;
-  }
-  .project-card{
-    height:250px !important;
-    min-height:250px !important;
-  }
-}
-
 
 /* =========================================================
-   JOURNEY REMOVED + SKILLS REBALANCED
-   ========================================================= */
-.skills-section{
-  background:#e9f3f1;
+   ABOUT
+========================================================= */
+
+.about{
+  background:var(--paper);
+  overflow:hidden;
 }
-.skills-showcase{
+
+.about:before{
+  content:"";
+
+  position:absolute;
+
+  width:720px;
+  height:720px;
+
+  right:-330px;
+  top:-280px;
+
+  border:1px solid #087e9b24;
+
+  border-radius:50%;
+}
+
+.about-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;
-  width:100%;
+
+  grid-template-columns:1.05fr .95fr;
+
+  gap:8vw;
+
+  align-items:center;
 }
-.skill-panel{
-  min-height:330px;
-  padding:32px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.34);
-  display:flex;
-  flex-direction:column;
-  box-sizing:border-box;
-}
-.skill-panel-top{
-  display:flex;
-  align-items:baseline;
-  gap:18px;
-  padding-bottom:20px;
-  border-bottom:1px solid var(--line);
-}
-.skill-index{
-  font-size:10px;
-  letter-spacing:.18em;
-  color:var(--blue);
-}
-.skill-panel h3{
-  margin:0;
-  font:500 31px/1 var(--serif);
-  color:var(--ink);
+
+.about-text{
+  font:400 clamp(32px,3.7vw,56px)/1.02 var(--serif);
+
+  max-width:760px;
+
   letter-spacing:-.025em;
 }
-.skill-panel-desc{
-  margin:20px 0 24px;
-  max-width:340px;
-  color:var(--muted);
+
+.about-text em{
+  color:var(--blue);
+}
+
+.about-details{
+  border-left:1px solid var(--line);
+
+  padding-left:30px;
+
+  color:#5d777d;
+
+  line-height:1.85;
+
+  font-size:14px;
+}
+
+.about-details strong{
+  display:block;
+
+  color:var(--ink);
+
+  margin-bottom:8px;
+}
+
+.stats{
+  display:flex;
+
+  gap:48px;
+
+  margin-top:48px;
+}
+
+.stat strong{
+  display:block;
+
+  font:500 50px var(--serif);
+
+  color:var(--blue);
+}
+
+.stat span{
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.12em;
+
+  color:#668087;
+}
+
+/* =========================================================
+   WORK SECTION
+========================================================= */
+
+.work-section{
+  background:
+    radial-gradient(
+      circle at 82% 8%,
+      #1eb8c522,
+      transparent 25%
+    ),
+    linear-gradient(
+      145deg,
+      #031a26,
+      #063448 60%,
+      #021720
+    );
+
+  color:#eef7f5;
+
+  overflow:hidden;
+}
+
+.work-section:before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  opacity:.18;
+
+  background:
+    repeating-radial-gradient(
+      ellipse at 30% 75%,
+      transparent 0 65px,
+      #8ed9df33 66px 67px,
+      transparent 68px 112px
+    );
+
+  transform:rotate(-7deg) scale(1.4);
+
+  pointer-events:none;
+}
+
+.work-section .section-note{
+  color:#9ec2c5;
+}
+
+.work-section .section-title{
+  color:#eef7f5;
+}
+
+.work-section .kicker{
+  color:#6ed5dc;
+}
+
+/* =========================================================
+   FEATURED ASTROTALK
+========================================================= */
+
+.featured{
+  width:100%;
+
+  height:360px;
+  min-height:360px;
+
+  display:grid;
+
+  grid-template-columns:1.12fr .88fr;
+
+  border:1px solid #cfe8e72e;
+
+  overflow:hidden;
+
+  background:#063447;
+
+  position:relative;
+}
+
+.featured-visual{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:360px;
+
+  background:#0b7f98;
+}
+
+.featured-visual:before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    url('assets/q.jpg')
+    center center /
+    contain
+    no-repeat;
+
+  filter:saturate(.95) contrast(1.03);
+
+  opacity:.9;
+
+  background-color:#0b7f98;
+}
+
+.featured-visual:after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #087f9b08,
+      #02192355
+    );
+}
+
+.image-note{
+  position:absolute;
+
+  left:24px;
+  bottom:20px;
+
+  z-index:4;
+
+  padding:7px 11px;
+
+  border:1px solid #ffffff66;
+  border-radius:999px;
+
+  background:#02192366;
+
+  color:#eff8f6;
+
+  font-size:9px;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  backdrop-filter:blur(8px);
+}
+
+.featured-info{
+  padding:38px 42px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  background:
+    linear-gradient(
+      145deg,
+      #03182122,
+      #011016aa
+    );
+
+  position:relative;
+  z-index:3;
+}
+
+.project-number{
+  font:500 17px var(--serif);
+  color:#8ed9df;
+}
+
+.featured-info h3{
+  font:500 clamp(44px,4.4vw,68px)/.86 var(--serif);
+
+  letter-spacing:-.045em;
+}
+
+.featured-info p{
+  max-width:430px;
+
+  margin-top:18px;
+
+  color:#a9c4c6;
+
   font-size:13px;
   line-height:1.7;
 }
+
+.project-link{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:13px;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.18em;
+}
+
+.project-link span{
+  font-size:22px;
+
+  transition:.3s;
+}
+
+.project-link:hover span{
+  transform:translateX(8px);
+}
+
+/* =========================================================
+   WORK TABS
+========================================================= */
+
+.work-tabs{
+  display:flex;
+
+  gap:8px;
+
+  margin:34px 0 20px;
+}
+
+.work-tab{
+  color:#9db9bc;
+
+  background:transparent;
+
+  border:1px solid #cfe8e733;
+
+  border-radius:999px;
+
+  padding:11px 18px;
+
+  cursor:pointer;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.15em;
+
+  transition:.3s;
+}
+
+.work-tab:hover,
+.work-tab.active{
+  background:#edf5f2;
+
+  color:var(--navy);
+
+  border-color:#edf5f2;
+}
+
+/* =========================================================
+   PROJECT TABS
+   IMPORTANT: only active project container displays
+========================================================= */
+
+.projects{
+  display:none;
+  width:100%;
+}
+
+.projects.active{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:15px;
+}
+
+/* =========================================================
+   ALL PROJECT CARDS
+========================================================= */
+
+.project-card{
+  position:relative;
+
+  box-sizing:border-box;
+
+  height:270px;
+  min-height:270px;
+
+  padding:28px;
+
+  border:1px solid #cfe8e733;
+
+  overflow:hidden;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  background:
+    linear-gradient(
+      145deg,
+      #071f2a,
+      #062b3b
+    );
+
+  color:#eef7f5;
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    box-shadow .35s ease;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+
+  border-color:#8ed9df99;
+
+  background:
+    linear-gradient(
+      145deg,
+      #092936,
+      #07384a
+    );
+
+  box-shadow:0 14px 30px #02192320;
+}
+
+.project-card h4{
+  font:500 clamp(30px,2.7vw,38px)/.88 var(--serif);
+
+  letter-spacing:-.04em;
+
+  margin-top:10px;
+}
+
+.project-card p{
+  max-width:290px;
+
+  color:#b2cbcd;
+
+  font-size:11.5px;
+  line-height:1.65;
+}
+
+.card-arrow{
+  align-self:flex-end;
+
+  width:38px;
+  height:38px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid #fff8;
+
+  border-radius:50%;
+
+  transition:.35s;
+}
+
+.project-card:hover .card-arrow{
+  background:#eef7f5;
+
+  color:var(--navy);
+
+  transform:rotate(25deg);
+}
+
+/* =========================================================
+   ASTROTALK CARD
+========================================================= */
+
+.astro-project-card{
+  background:#063447;
+}
+
+.astro-card-image{
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  z-index:0;
+
+  opacity:.82;
+
+  transition:opacity .35s;
+
+  filter:saturate(.9) contrast(1.05);
+}
+
+.astro-card-overlay{
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #02192322 15%,
+      #021923e8 100%
+    );
+
+  z-index:1;
+}
+
+.astro-project-card:hover .astro-card-image{
+  opacity:.92;
+}
+
+.project-card > *:not(.astro-card-image):not(.astro-card-overlay){
+  position:relative;
+
+  z-index:2;
+}
+
+/* =========================================================
+   DATA PROJECTS
+========================================================= */
+
+/*
+  Data cards intentionally use the exact same
+  .project-card styling as Design and Development.
+*/
+
+.data-project-card{
+  background:
+    linear-gradient(
+      145deg,
+      #071f2a,
+      #062b3b
+    );
+}
+
+/* Banking project has a subtle Power BI visual texture */
+
+.banking-card{
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      #37c6d122,
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      #071f2a,
+      #062b3b
+    );
+}
+
+.banking-card:hover{
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      #37c6d133,
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      #092936,
+      #07384a
+    );
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-section{
+  background:#e9f3f1;
+}
+
+.skills-showcase{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:16px;
+
+  width:100%;
+}
+
+.skill-panel{
+  min-height:330px;
+
+  padding:32px;
+
+  border:1px solid var(--line);
+
+  background:rgba(255,255,255,.34);
+
+  display:flex;
+
+  flex-direction:column;
+
+  box-sizing:border-box;
+}
+
+.skill-panel-top{
+  display:flex;
+
+  align-items:baseline;
+
+  gap:18px;
+
+  padding-bottom:20px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.skill-index{
+  font-size:10px;
+
+  letter-spacing:.18em;
+
+  color:var(--blue);
+}
+
+.skill-panel h3{
+  margin:0;
+
+  font:500 31px/1 var(--serif);
+
+  color:var(--ink);
+
+  letter-spacing:-.025em;
+}
+
+.skill-panel-desc{
+  margin:20px 0 24px;
+
+  max-width:340px;
+
+  color:var(--muted);
+
+  font-size:13px;
+  line-height:1.7;
+}
+
 .skill-panel .skill-cloud{
   margin-top:auto;
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:9px;
+
   align-content:flex-start;
 }
-.skill-panel .skill{
+
+.skill{
+  border:1px solid var(--line);
+
+  background:#ffffff66;
+
   padding:11px 15px;
+
+  border-radius:999px;
+
   font-size:10.5px;
+
+  transition:.35s;
 }
+
+.skill:hover{
+  background:var(--blue);
+
+  color:#fff;
+
+  border-color:var(--blue);
+
+  transform:
+    translateY(-4px)
+    rotate(-2deg);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+  min-height:78vh;
+
+  background:
+    radial-gradient(
+      circle at 82% 15%,
+      #48d0d522,
+      transparent 22%
+    ),
+    linear-gradient(
+      150deg,
+      #02141d,
+      #06435a 65%,
+      #087e9b
+    );
+
+  color:#eef7f5;
+
+  overflow:hidden;
+}
+
+.contact .kicker{
+  color:#8ed9df;
+}
+
+.contact-title{
+  font:400 clamp(82px,12vw,170px)/.7 var(--serif);
+
+  letter-spacing:-.07em;
+}
+
+.contact-title em{
+  color:#8ed9df;
+}
+
+.contact-copy{
+  margin-top:38px;
+
+  max-width:510px;
+
+  color:#b4d1d2;
+
+  font-size:13.5px;
+  line-height:1.8;
+}
+
+.contact .button{
+  border-color:#ffffff77;
+}
+
+.contact .button:hover{
+  background:#fff;
+
+  color:var(--navy);
+}
+
+.contact .button.filled{
+  background:#edf7f5;
+
+  color:var(--navy);
+
+  border-color:#edf7f5;
+}
+
+.contact-links{
+  display:flex;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  margin-top:25px;
+}
+
+.contact-art{
+  position:absolute;
+
+  right:2vw;
+  bottom:-80px;
+
+  width:min(48vw,650px);
+  height:560px;
+
+  opacity:.9;
+}
+
+.contact-art img{
+  position:absolute;
+
+  object-fit:cover;
+
+  box-shadow:0 30px 70px #02172055;
+}
+
+.contact-art .c1{
+  width:250px;
+  height:350px;
+
+  right:30%;
+  bottom:7%;
+
+  border-radius:125px 125px 15px 15px;
+}
+
+.contact-art .c2{
+  width:170px;
+  height:170px;
+
+  right:2%;
+  bottom:16%;
+
+  border-radius:50%;
+}
+
+.contact-art .c3{
+  width:160px;
+  height:240px;
+
+  left:3%;
+  bottom:3%;
+
+  border-radius:90px 90px 12px 12px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:
+    22px
+    max(5vw,calc((100vw - var(--content-max))/2));
+
+  background:#021018;
+
+  color:#78959b;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.16em;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+
+  transform:translateY(35px);
+
+  transition:
+    opacity .9s ease,
+    transform .9s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+
+  transform:none;
+}
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor{
+  position:fixed;
+
+  z-index:2000;
+
+  width:16px;
+  height:16px;
+
+  border:1px solid var(--blue);
+
+  border-radius:50%;
+
+  pointer-events:none;
+
+  transform:translate(-50%,-50%);
+
+  transition:
+    width .25s,
+    height .25s,
+    background .25s;
+}
+
+.cursor.big{
+  width:54px;
+  height:54px;
+
+  background:#37c6d11c;
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.project-card:focus-visible,
+.button:focus-visible,
+.connect:focus-visible,
+.nav-links a:focus-visible,
+.work-tab:focus-visible{
+  outline:2px solid var(--cyan);
+
+  outline-offset:4px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media(max-width:1000px){
+
+  .hero-copy{
+    width:60%;
+  }
+
+  .hero-art{
+    width:57vw;
+    right:-7vw;
+  }
+
+  .hero h1{
+    font-size:13vw;
+  }
+
+  .featured{
+    grid-template-columns:1fr;
+
+    height:auto;
+    min-height:0;
+  }
+
+  .featured-visual{
+    min-height:300px;
+    height:300px;
+  }
+
+  .featured-info{
+    min-height:300px;
+  }
+
+  .projects.active{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
   .skills-showcase{
     grid-template-columns:1fr 1fr;
   }
+
   .skill-panel:last-child{
     grid-column:1/-1;
   }
 }
+
 @media(max-width:760px){
+
+  .nav{
+    height:72px;
+
+    padding:0 6vw;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .connect{
+    padding:10px 13px;
+  }
+
+  .hero{
+    display:block;
+
+    padding:125px 6vw 70px;
+  }
+
+  .hero-copy{
+    width:88vw;
+  }
+
+  .hero h1{
+    font-size:23vw;
+  }
+
+  .hero-sub{
+    font-size:18px;
+    line-height:1.65;
+  }
+
+  .hero-actions{
+    margin-left:0;
+  }
+
+  .hero-art{
+    position:relative;
+
+    width:112%;
+    height:430px;
+
+    right:auto;
+    top:auto;
+
+    margin:5px -6% -15px;
+  }
+
+  .hero-ocean{
+    width:57%;
+    height:76%;
+
+    right:3%;
+  }
+
+  .hero-window{
+    width:42%;
+    height:48%;
+
+    right:25%;
+  }
+
+  .hero-cloud{
+    left:5%;
+    top:12%;
+
+    width:180px;
+  }
+
+  .hero-quote{
+    right:6vw;
+    bottom:2%;
+
+    font-size:17px;
+  }
+
+  .marquee{
+    height:56px;
+    min-height:56px;
+  }
+
+  .marquee-track{
+    font-size:21px;
+  }
+
+  .marquee span{
+    margin:0 20px;
+  }
+
+  .section{
+    padding:88px 6vw;
+  }
+
+  .section-head{
+    display:block;
+
+    margin-bottom:38px;
+  }
+
+  .section-note{
+    flex:none;
+
+    width:auto;
+    max-width:100%;
+
+    margin-top:20px;
+  }
+
+  .section-title{
+    font-size:clamp(48px,15vw,72px);
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+
+    gap:45px;
+  }
+
+  .about-text{
+    font-size:clamp(31px,9vw,46px);
+  }
+
+  .stats{
+    gap:25px;
+
+    flex-wrap:wrap;
+  }
+
+  .featured-visual{
+    min-height:270px;
+    height:270px;
+  }
+
+  .featured-info{
+    min-height:290px;
+
+    padding:30px;
+  }
+
+  .featured-info h3{
+    font-size:clamp(42px,13vw,62px);
+  }
+
+  .projects.active{
+    grid-template-columns:1fr;
+  }
+
+  .project-card{
+    height:250px;
+    min-height:250px;
+  }
+
+  .project-card h4{
+    font-size:34px;
+  }
+
   .skills-showcase{
     grid-template-columns:1fr;
   }
+
   .skill-panel:last-child{
     grid-column:auto;
   }
+
   .skill-panel{
     min-height:auto;
+  }
+
+  .contact-art{
+    width:100vw;
+    height:420px;
+
+    right:-15vw;
+
+    opacity:.5;
+  }
+
+  footer{
+    padding-left:6vw;
+    padding-right:6vw;
+
+    flex-direction:column;
+
+    line-height:2.2;
+  }
+
+  .cursor{
+    display:none!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+
+    scroll-behavior:auto!important;
+
+    transition-duration:.01ms!important;
   }
 }
 
 </style>
 </head>
+
 <body>
+
 <div class="cursor" id="cursor"></div>
-<nav class="nav" id="nav"><a class="logo" href="#"><span>L</span></a><div class="nav-links"><a href="#about">About</a><a href="#work">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div><a class="connect" href="#contact">Let's connect ✦</a></nav>
-<main>
-<section class="hero" id="home">
-<div class="hero-copy"><div class="eyebrow"><span></span> Computer Science × Product & UI/UX Design</div><h1>Lina<br><em>Alamri</em></h1><p class="hero-sub">I combine <em>product design</em> and computer science to turn complex ideas into clear, engaging digital experiences with a growing focus on AI.</p><div class="hero-actions"><a class="button filled" href="#work">Explore my work ✦</a><a class="button" href="Lina_Khaled_Alamri_Resume.pdf" download>Download CV ↓</a></div></div>
-<div class="hero-art" id="heroArt" aria-hidden="true"><img class="hero-ocean" src="assets/ocean-wave.jpg" alt=""><img class="hero-window" src="assets/surreal-window.jpg" alt=""><div class="hero-cloud"></div></div>
-<div class="hero-quote">Reality is <strong>optional.</strong><br>Imagination is my interface.</div>
-</section>
-<div class="marquee"><div class="marquee-track">PRODUCT DESIGN <span>✦</span>UI/UX DESIGN <span>✦</span>DATA ANALYSIS <span>✦</span>PROBLEM SOLVING<span>✦</span> AI EXPERIENCES <span>✦</span> INTERACTIVE SYSTEMS <span>✦</span> PRODUCT DESIGN <span>✦</span> AI EXPERIENCES <span>✦</span> INTERACTIVE SYSTEMS <span>✦</span></div></div>
-<section class="section about reveal" id="about">
-<div class="section-head">
-<div>
-<div class="kicker">01 — The person behind the pixels</div>
-<h2 class="section-title">About <em>me.</em></h2>
-</div>
-<p class="section-note">A Computer Science graduate with a strong interest in Product Design, UI/UX and AI-driven digital experiences.</p>
-</div>
 
-<div class="about-grid">
-<div>
-<p class="about-text">
-I enjoy turning <em>technical ideas</em> into experiences that are clear, intuitive and visually intentional.
-My background in Computer Science helps me design with both the user and the implementation in mind.
-</p>
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
 
-<div class="stats">
-<div class="stat"><strong>4.79</strong><span>GPA / 5.00</span></div>
-<div class="stat"><strong>3</strong><span>Focus areas</span></div>
-<div class="stat"><strong>7+</strong><span>Selected projects</span></div>
-</div>
-</div>
+<nav class="nav" id="nav">
 
-<div class="about-details">
-<strong>Computer Science · Taibah University</strong>
-Bachelor’s degree with hands-on work across UI/UX design, software development, interactive web experiences and data visualization.
+  <a class="logo" href="#home">
+    <span>L</span>
+  </a>
 
-<br><br>
-
-My strongest interest is at the intersection of <b>Product Design, UI/UX and AI</b>, supported by a technical foundation in programming and web development.
-</div>
-</div>
-</section>
-<section class="section work-section reveal" id="work"><div class="section-head"><div><div class="kicker">02 — Selected work</div><h2 class="section-title">Things I built<br><em>& imagined.</em></h2></div><p class="section-note">A selection of product design, software development and data visualization work — with AstroTalk as my graduation project.</p></div>
-<div class="featured"><div class="featured-visual"><div class="image-note">ASTROTALK · GRADUATION PROJECT</div><div class="featured-art"></div></div><div class="featured-info"><div class="project-number">01 / FEATURED</div><div><h3>AstroTalk<br>VR × AI</h3><p>An interactive AI-based web system that combines 3D solar-system visualization, WebGL/WebXR and conversational AI to create a more immersive learning experience. Built as my graduation project and recognized with the Best Project Idea award.</p></div><a class="project-link" href="https://github.com/TaibahViz/AstroTalk" target="_blank">View project <span>→</span></a></div></div>
-<div class="work-tabs"><button class="work-tab active" onclick="showProjects('design',this)">Design</button><button class="work-tab" onclick="showProjects('development',this)">Development</button><button class="work-tab" onclick="showProjects('data',this)">Data</button></div>
-<div id="design" class="projects active">
-<a class="project-card astro-project-card" href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3088" target="_blank">
-<div class="astro-card-overlay"></div><div><div class="project-number">D / 01</div><h4>AstroTalk<br>Mobile UX</h4></div><p>UX/UI work covering user flows, wireframes, interface structure and visual design for the AstroTalk experience.</p><span class="card-arrow">↗</span></a>
-<a class="project-card" href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3576" target="_blank"><div><div class="project-number">D / 02</div><h4>Sunify<br>E-commerce</h4></div><p>E-commerce interface focused on visual identity, product presentation, navigation and a streamlined shopping flow.</p><span class="card-arrow">↗</span></a>
-<a class="project-card" href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-1740" target="_blank"><div><div class="project-number">D / 03</div><h4>Travelo<br>Experience</h4></div><p>Travel booking concept focused on information hierarchy, user flows and high-fidelity interface design.</p><span class="card-arrow">↗</span></a>
-</div>
-<div id="development" class="projects">
-<a class="project-card" href="https://github.com/LinaAlamri/X-Like-App" target="_blank"><div><div class="project-number">C / 01</div><h4>X-Like<br>Social App</h4></div><p>Cross-platform social application built with Flutter and Firebase, including authentication and core social interactions.</p><span class="card-arrow">↗</span></a>
-<a class="project-card" href="https://github.com/LinaAlamri/Dictionary-App" target="_blank"><div><div class="project-number">C / 02</div><h4>Dictionary<br>App</h4></div><p>Flutter dictionary application using Cubit for state management and Shared Preferences for local storage.</p><span class="card-arrow">↗</span></a>
-<a class="project-card" href="https://github.com/LinaAlamri/Business-hub" target="_blank"><div><div class="project-number">C / 03</div><h4>Business<br>Hub</h4></div><p>Flutter application concept focused on organizing business-related information through clear, accessible user flows.</p><span class="card-arrow">↗</span></a>
-</div>
-<div id="data" class="projects"><a class="project-card" href="#" onclick="return false"><div><div class="project-number">A / 01</div><h4>Endangered<br>Species</h4></div><p>Power BI dashboard work focused on transforming data into clear visual insights and decision-ready reporting.</p><span class="card-arrow">↗</span></a></div>
-</section>
-
-
-
-<section class="section skills-section reveal" id="skills">
-<div class="section-head">
-  <div>
-    <div class="kicker">03 — Tools of the trade</div>
-    <h2 class="section-title">My <em>toolkit.</em></h2>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
   </div>
-  <p class="section-note">The design, development and AI tools I use to turn ideas into thoughtful digital products.</p>
-</div>
 
-<div class="skills-showcase">
+  <a class="connect" href="#contact">
+    Let's connect ✦
+  </a>
 
-  <article class="skill-panel">
-    <div class="skill-panel-top">
-      <span class="skill-index">01</span>
-      <h3>Product Design</h3>
-    </div>
-    <p class="skill-panel-desc">Designing clear, intuitive interfaces from idea to polished experience.</p>
-    <div class="skill-cloud">
-      <span class="skill">Figma</span>
-      <span class="skill">UI/UX Design</span>
-      <span class="skill">Wireframing</span>
-      <span class="skill">User Flows</span>
-      <span class="skill">Visual Design</span>
-      <span class="skill">Design Systems</span>
-    </div>
-  </article>
+</nav>
 
-  <article class="skill-panel">
-    <div class="skill-panel-top">
-      <span class="skill-index">02</span>
-      <h3>Development</h3>
-    </div>
-    <p class="skill-panel-desc">Building responsive interfaces and practical software with a strong technical foundation.</p>
-    <div class="skill-cloud">
-      <span class="skill">Java</span>
-      <span class="skill">HTML</span>
-      <span class="skill">CSS</span>
-      <span class="skill">JavaScript</span>
-      <span class="skill">Flutter / Dart</span>
-      <span class="skill">Node.js</span>
-      <span class="skill">Three.js</span>
-      <span class="skill">Firebase</span>
-      <span class="skill">REST APIs</span>
-    </div>
-  </article>
+<main>
 
-  <article class="skill-panel">
-    <div class="skill-panel-top">
-      <span class="skill-index">03</span>
-      <h3>AI · Interactive · Data</h3>
-    </div>
-    <p class="skill-panel-desc">Exploring intelligent, interactive and data-driven experiences.</p>
-    <div class="skill-cloud">
-      <span class="skill">OpenAI API</span>
-      <span class="skill">WebGL</span>
-      <span class="skill">WebXR</span>
-      <span class="skill">AI Interaction</span>
-      <span class="skill">Python</span>
-      <span class="skill">SQL</span>
-      <span class="skill">Power BI</span>
-    </div>
-  </article>
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-</div>
+<section class="hero" id="home">
+
+  <div class="hero-copy">
+
+    <div class="eyebrow">
+      <span></span>
+      Computer Science × Product & UI/UX Design
+    </div>
+
+    <h1>
+      Lina<br>
+      <em>Alamri</em>
+    </h1>
+
+    <p class="hero-sub">
+      I combine <em>product design</em> and computer science
+      to turn complex ideas into clear, engaging digital
+      experiences with a growing focus on AI.
+    </p>
+
+    <div class="hero-actions">
+
+      <a class="button filled" href="#work">
+        Explore my work ✦
+      </a>
+
+      <a
+        class="button"
+        href="Lina_Khaled_Alamri_Resume.pdf"
+        download
+      >
+        Download CV ↓
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="hero-art" id="heroArt" aria-hidden="true">
+
+    <img
+      class="hero-ocean"
+      src="assets/ocean-wave.jpg"
+      alt=""
+    >
+
+    <img
+      class="hero-window"
+      src="assets/surreal-window.jpg"
+      alt=""
+    >
+
+    <div class="hero-cloud"></div>
+
+  </div>
+
+  <div class="hero-quote">
+    Reality is <strong>optional.</strong><br>
+    Imagination is my interface.
+  </div>
+
 </section>
-<section class="section contact reveal" id="contact"><div class="kicker">04 — Say hello</div><h2 class="contact-title">Let's<br><em>connect.</em></h2><p class="contact-copy">I’m interested in opportunities where product thinking, UI/UX and technology come together — especially digital products and AI-driven experiences.</p><div class="contact-links"><a class="button filled" href="mailto:linakh1004@gmail.com">Email me ↗</a><a class="button" href="https://www.linkedin.com/in/lina-alamri-08b75536a" target="_blank">LinkedIn ↗</a><a class="button" href="Lina_Khaled_Alamri_Resume.pdf" download>CV ↓</a></div><div class="contact-art"><img class="c1" src="" alt=""><img class="c2" src="" alt=""><img class="c3" src="" alt=""></div></section>
+
+<!-- =======================================================
+     MARQUEE
+======================================================= -->
+
+<div class="marquee">
+
+  <div class="marquee-track">
+
+    PRODUCT DESIGN
+    <span>✦</span>
+
+    UI/UX DESIGN
+    <span>✦</span>
+
+    DATA ANALYSIS
+    <span>✦</span>
+
+    PROBLEM SOLVING
+    <span>✦</span>
+
+    AI EXPERIENCES
+    <span>✦</span>
+
+    INTERACTIVE SYSTEMS
+    <span>✦</span>
+
+    PRODUCT DESIGN
+    <span>✦</span>
+
+    AI EXPERIENCES
+    <span>✦</span>
+
+    INTERACTIVE SYSTEMS
+    <span>✦</span>
+
+  </div>
+
+</div>
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section class="section about reveal" id="about">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="kicker">
+        01 — The person behind the pixels
+      </div>
+
+      <h2 class="section-title">
+        About <em>me.</em>
+      </h2>
+
+    </div>
+
+    <p class="section-note">
+      A Computer Science graduate with a strong interest in
+      Product Design, UI/UX and AI-driven digital experiences.
+    </p>
+
+  </div>
+
+  <div class="about-grid">
+
+    <div>
+
+      <p class="about-text">
+        I enjoy turning <em>technical ideas</em> into experiences
+        that are clear, intuitive and visually intentional.
+        My background in Computer Science helps me design with
+        both the user and the implementation in mind.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>4.79</strong>
+          <span>GPA / 5.00</span>
+        </div>
+
+        <div class="stat">
+          <strong>3</strong>
+          <span>Focus areas</span>
+        </div>
+
+        <div class="stat">
+          <strong>7+</strong>
+          <span>Selected projects</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="about-details">
+
+      <strong>
+        Computer Science · Taibah University
+      </strong>
+
+      Bachelor’s degree with hands-on work across
+      UI/UX design, software development, interactive
+      web experiences and data visualization.
+
+      <br><br>
+
+      My strongest interest is at the intersection of
+      <b>Product Design, UI/UX and AI</b>, supported by
+      a technical foundation in programming and web development.
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =======================================================
+     WORK
+======================================================= -->
+
+<section class="section work-section reveal" id="work">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="kicker">
+        02 — Selected work
+      </div>
+
+      <h2 class="section-title">
+        Things I built<br>
+        <em>& imagined.</em>
+      </h2>
+
+    </div>
+
+    <p class="section-note">
+      A selection of product design, software development
+      and data visualization work — with AstroTalk as my
+      graduation project.
+    </p>
+
+  </div>
+
+  <!-- FEATURED ASTROTALK -->
+
+  <div class="featured">
+
+    <div class="featured-visual">
+
+      <div class="image-note">
+        ASTROTALK · GRADUATION PROJECT
+      </div>
+
+    </div>
+
+    <div class="featured-info">
+
+      <div class="project-number">
+        01 / FEATURED
+      </div>
+
+      <div>
+
+        <h3>
+          AstroTalk<br>
+          VR × AI
+        </h3>
+
+        <p>
+          An interactive AI-based web system that combines
+          3D solar-system visualization, WebGL/WebXR and
+          conversational AI to create a more immersive
+          learning experience. Built as my graduation project
+          and recognized with the Best Project Idea award.
+        </p>
+
+      </div>
+
+      <a
+        class="project-link"
+        href="https://github.com/TaibahViz/AstroTalk"
+        target="_blank"
+        rel="noopener"
+      >
+        View project
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- =====================================================
+       PROJECT FILTERS
+  ====================================================== -->
+
+  <div class="work-tabs">
+
+    <button
+      class="work-tab active"
+      type="button"
+      data-target="design"
+    >
+      Design
+    </button>
+
+    <button
+      class="work-tab"
+      type="button"
+      data-target="development"
+    >
+      Development
+    </button>
+
+    <button
+      class="work-tab"
+      type="button"
+      data-target="data"
+    >
+      Data
+    </button>
+
+  </div>
+
+  <!-- =====================================================
+       DESIGN
+  ====================================================== -->
+
+  <div id="design" class="projects active">
+
+    <a
+      class="project-card astro-project-card"
+      href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3088"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <div class="astro-card-overlay"></div>
+
+      <div>
+        <div class="project-number">
+          D / 01
+        </div>
+
+        <h4>
+          AstroTalk<br>
+          Mobile UX
+        </h4>
+      </div>
+
+      <p>
+        UX/UI work covering user flows, wireframes,
+        interface structure and visual design for
+        the AstroTalk experience.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+
+    <a
+      class="project-card"
+      href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-3576"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <div>
+
+        <div class="project-number">
+          D / 02
+        </div>
+
+        <h4>
+          Sunify<br>
+          E-commerce
+        </h4>
+
+      </div>
+
+      <p>
+        E-commerce interface focused on visual identity,
+        product presentation, navigation and a streamlined
+        shopping flow.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+
+    <a
+      class="project-card"
+      href="https://www.figma.com/proto/TB1U9qJVtEzdGJ98HKLMhg/Untitled?node-id=1-1740"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <div>
+
+        <div class="project-number">
+          D / 03
+        </div>
+
+        <h4>
+          Travelo<br>
+          Experience
+        </h4>
+
+      </div>
+
+      <p>
+        Travel booking concept focused on information
+        hierarchy, user flows and high-fidelity
+        interface design.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+  </div>
+
+
+  <!-- =====================================================
+       DEVELOPMENT
+  ====================================================== -->
+
+  <div id="development" class="projects">
+
+    <a
+      class="project-card"
+      href="https://github.com/LinaAlamri/X-Like-App"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <div>
+
+        <div class="project-number">
+          C / 01
+        </div>
+
+        <h4>
+          X-Like<br>
+          Social App
+        </h4>
+
+      </div>
+
+      <p>
+        Cross-platform social application built with
+        Flutter and Firebase, including authentication
+        and core social interactions.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+
+    <a
+      class="project-card"
+      href="https://github.com/LinaAlamri/Dictionary-App"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <div>
+
+        <div class="project-number">
+          C / 02
+        </div>
+
+        <h4>
+          Dictionary<br>
+          App
+        </h4>
+
+      </div>
+
+      <p>
+        Flutter dictionary application using Cubit
+        for state management and Shared Preferences
+        for local storage.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+
+    <a
+      class="project-card"
+      href="https://github.com/LinaAlamri/Business-hub"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <div>
+
+        <div class="project-number">
+          C / 03
+        </div>
+
+        <h4>
+          Business<br>
+          Hub
+        </h4>
+
+      </div>
+
+      <p>
+        Flutter application concept focused on organizing
+        business-related information through clear,
+        accessible user flows.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+  </div>
+
+
+  <!-- =====================================================
+       DATA
+       THIS IS THE CORRECTED DATA SECTION
+  ====================================================== -->
+
+  <div id="data" class="projects">
+
+    <!-- BANKING ANALYTICS -->
+
+    <a
+      class="project-card data-project-card banking-card"
+      href="banking-dashboard.html"
+    >
+
+      <div>
+
+        <div class="project-number">
+          A / 01
+        </div>
+
+        <h4>
+          Digital Banking<br>
+          Customer Analytics
+        </h4>
+
+      </div>
+
+      <p>
+        Interactive Power BI dashboard analyzing customer
+        experience, digital engagement, service performance
+        and retention signals across banking products,
+        regions and customer segments.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+
+    <!-- ENDANGERED SPECIES -->
+
+    <a
+      class="project-card data-project-card"
+      href="#"
+      onclick="return false;"
+    >
+
+      <div>
+
+        <div class="project-number">
+          A / 02
+        </div>
+
+        <h4>
+          Endangered<br>
+          Species
+        </h4>
+
+      </div>
+
+      <p>
+        Data cleaning, modeling and visualization using
+        Power BI to explore patterns across endangered
+        and extinct species.
+      </p>
+
+      <span class="card-arrow">
+        ↗
+      </span>
+
+    </a>
+
+  </div>
+
+</section>
+
+<!-- =======================================================
+     SKILLS
+======================================================= -->
+
+<section
+  class="section skills-section reveal"
+  id="skills"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="kicker">
+        03 — Tools of the trade
+      </div>
+
+      <h2 class="section-title">
+        My <em>toolkit.</em>
+      </h2>
+
+    </div>
+
+    <p class="section-note">
+      The design, development and AI tools I use to turn
+      ideas into thoughtful digital products.
+    </p>
+
+  </div>
+
+
+  <div class="skills-showcase">
+
+    <!-- PRODUCT DESIGN -->
+
+    <article class="skill-panel">
+
+      <div class="skill-panel-top">
+
+        <span class="skill-index">
+          01
+        </span>
+
+        <h3>
+          Product Design
+        </h3>
+
+      </div>
+
+      <p class="skill-panel-desc">
+        Designing clear, intuitive interfaces from idea
+        to polished experience.
+      </p>
+
+      <div class="skill-cloud">
+
+        <span class="skill">Figma</span>
+        <span class="skill">UI/UX Design</span>
+        <span class="skill">Wireframing</span>
+        <span class="skill">User Flows</span>
+        <span class="skill">Visual Design</span>
+        <span class="skill">Design Systems</span>
+
+      </div>
+
+    </article>
+
+
+    <!-- DEVELOPMENT -->
+
+    <article class="skill-panel">
+
+      <div class="skill-panel-top">
+
+        <span class="skill-index">
+          02
+        </span>
+
+        <h3>
+          Development
+        </h3>
+
+      </div>
+
+      <p class="skill-panel-desc">
+        Building responsive interfaces and practical
+        software with a strong technical foundation.
+      </p>
+
+      <div class="skill-cloud">
+
+        <span class="skill">Java</span>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Flutter / Dart</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Three.js</span>
+        <span class="skill">Firebase</span>
+        <span class="skill">REST APIs</span>
+
+      </div>
+
+    </article>
+
+
+    <!-- AI / DATA -->
+
+    <article class="skill-panel">
+
+      <div class="skill-panel-top">
+
+        <span class="skill-index">
+          03
+        </span>
+
+        <h3>
+          AI · Interactive · Data
+        </h3>
+
+      </div>
+
+      <p class="skill-panel-desc">
+        Exploring intelligent, interactive and
+        data-driven experiences.
+      </p>
+
+      <div class="skill-cloud">
+
+        <span class="skill">OpenAI API</span>
+        <span class="skill">WebGL</span>
+        <span class="skill">WebXR</span>
+        <span class="skill">AI Interaction</span>
+        <span class="skill">Python</span>
+        <span class="skill">SQL</span>
+        <span class="skill">Power BI</span>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+  class="section contact reveal"
+  id="contact"
+>
+
+  <div class="kicker">
+    04 — Say hello
+  </div>
+
+  <h2 class="contact-title">
+    Let's<br>
+    <em>connect.</em>
+  </h2>
+
+  <p class="contact-copy">
+    I’m interested in opportunities where product thinking,
+    UI/UX and technology come together — especially digital
+    products and AI-driven experiences.
+  </p>
+
+  <div class="contact-links">
+
+    <a
+      class="button filled"
+      href="mailto:linakh1004@gmail.com"
+    >
+      Email me ↗
+    </a>
+
+    <a
+      class="button"
+      href="https://www.linkedin.com/in/lina-alamri-08b75536a"
+      target="_blank"
+      rel="noopener"
+    >
+      LinkedIn ↗
+    </a>
+
+    <a
+      class="button"
+      href="Lina_Khaled_Alamri_Resume.pdf"
+      download
+    >
+      CV ↓
+    </a>
+
+  </div>
+
+  <div class="contact-art">
+
+    <img
+      class="c1"
+      src=""
+      alt=""
+    >
+
+    <img
+      class="c2"
+      src=""
+      alt=""
+    >
+
+    <img
+      class="c3"
+      src=""
+      alt=""
+    >
+
+  </div>
+
+</section>
+
 </main>
-<footer><span>© 2026 Lina Khaled Alamri</span><span>Designed somewhere between reality & imagination.</span></footer>
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+  <span>
+    © 2026 Lina Khaled Alamri
+  </span>
+
+  <span>
+    Designed somewhere between reality & imagination.
+  </span>
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
 <script>
-function showProjects(id,button){document.querySelectorAll('.projects').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.work-tab').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');button.classList.add('active')}
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
-const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
-const cursor=document.getElementById('cursor');if(matchMedia('(pointer:fine)').matches){addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});document.querySelectorAll('a,button,.skill').forEach(e=>{e.addEventListener('mouseenter',()=>cursor.classList.add('big'));e.addEventListener('mouseleave',()=>cursor.classList.remove('big'))})}else{cursor.style.display='none'}
+
+/* =========================================================
+   PROJECT TABS
+========================================================= */
+
+const workTabs = document.querySelectorAll(".work-tab");
+const projectSections = document.querySelectorAll(".projects");
+
+workTabs.forEach(function(button){
+
+  button.addEventListener("click", function(){
+
+    const targetId = button.dataset.target;
+
+    /* Hide ALL project groups */
+    projectSections.forEach(function(project){
+
+      project.classList.remove("active");
+
+    });
+
+    /* Remove active state from ALL buttons */
+    workTabs.forEach(function(tab){
+
+      tab.classList.remove("active");
+
+    });
+
+    /* Show ONLY selected group */
+    const target = document.getElementById(targetId);
+
+    if(target){
+      target.classList.add("active");
+    }
+
+    /* Activate clicked button */
+    button.classList.add("active");
+
+  });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer = new IntersectionObserver(
+  function(entries){
+
+    entries.forEach(function(entry){
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add("visible");
+
+      }
+
+    });
+
+  },
+  {
+    threshold:.12
+  }
+);
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(function(element){
+
+    observer.observe(element);
+
+  });
+
+
+/* =========================================================
+   NAV SCROLL
+========================================================= */
+
+const nav = document.getElementById("nav");
+
+window.addEventListener(
+  "scroll",
+  function(){
+
+    nav.classList.toggle(
+      "scrolled",
+      window.scrollY > 30
+    );
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+const cursor = document.getElementById("cursor");
+
+if(
+  window.matchMedia("(pointer:fine)").matches
+){
+
+  window.addEventListener(
+    "mousemove",
+    function(event){
+
+      cursor.style.left =
+        event.clientX + "px";
+
+      cursor.style.top =
+        event.clientY + "px";
+
+    }
+  );
+
+  document
+    .querySelectorAll(
+      "a,button,.skill"
+    )
+    .forEach(function(element){
+
+      element.addEventListener(
+        "mouseenter",
+        function(){
+
+          cursor.classList.add("big");
+
+        }
+      );
+
+      element.addEventListener(
+        "mouseleave",
+        function(){
+
+          cursor.classList.remove("big");
+
+        }
+      );
+
+    });
+
+}else{
+
+  cursor.style.display="none";
+
+}
+
 </script>
+
 </body>
 </html>
